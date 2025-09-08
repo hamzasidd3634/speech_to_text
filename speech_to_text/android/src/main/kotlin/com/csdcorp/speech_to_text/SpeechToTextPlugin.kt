@@ -139,7 +139,7 @@ public class SpeechToTextPlugin :
     private lateinit var timerTask: TimerTask
 
     // --- New audio focus fields ---
-    private var mixWithOthers: Boolean = false
+    private var mixWithOthers: Boolean = true
     private var audioManager: AudioManager? = null
     private var audioFocusRequest: AudioFocusRequest? = null
     private var audioFocusChangeListener: AudioManager.OnAudioFocusChangeListener? = null
@@ -227,7 +227,7 @@ public class SpeechToTextPlugin :
                     val pauseFor =
                         call.argument<Int?>("pauseFor")
                     // New flag from Dart
-                    val mixWithOthersArg = call.argument<Boolean>("mixWithOthers") ?: false
+                    val mixWithOthersArg = true
                     startListening(result, localeId, partialResults, listenModeIndex, onDevice, pauseFor, mixWithOthersArg )
                 }
                 "stop" -> stopListening(result)
